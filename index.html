@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>蔡元培先生介绍</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            padding: 0;
+            margin: 0;
+            max-width: 100%;
+            overflow-x: hidden;
+            touch-action: manipulation;
+        }
+
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            background-color: #fff;
+            min-height: 100vh;
+        }
+
+        /* 标题区域优化 */
+        .title-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: linear-gradient(135deg, #8D0e42 0%, #a11a52 100%);
+            color: white;
+            padding: 12px 15px;
+            position: sticky;
+            top: 0;
+            z-index: 997;
+        }
+
+        .nav-button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 4px;
+            transition: background 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 44px;
+            min-height: 44px;
+        }
+
+        .nav-button:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-button img {
+            width: 24px;
+            height: 24px;
+            filter: brightness(0) invert(1);
+        }
+
+        .main-title {
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            margin: 0 10px;
+            flex-grow: 1;
+            line-height: 1.2;
+        }
+
+        /* 标题区域 - 左对齐 */
+        .header-content {
+            background: linear-gradient(135deg,#a11a52 100%);
+            color: white;
+            padding: 25px 15px;
+            text-align: left;
+        }
+
+        .page-title {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .page-subtitle {
+            font-size: 15px;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 5px;
+        }
+
+        /* 红色背景的人物作品部分 */
+        .red-section {
+            margin-top: -10px;
+            background: linear-gradient(135deg,#a11a52 100%);
+            padding: 25px 15px;
+            color: white;
+        }
+
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* 照片部分 - 去掉边框 */
+        .photo-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .profile-image {
+            width: 100%;
+            max-width: 180px; /* 缩小一半：从300px改为150px */
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            /* 去掉边框：删除 border 属性 */
+            object-fit: cover;
+        }
+
+        /* 介绍文字部分 - 浅色底色，去掉边框 */
+        .intro-section {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 12px;
+        padding: 20px;
+        }
+
+        .intro-text {
+            font-size: 15px;
+            line-height: 1.8;
+            text-align: justify;
+            color: #333; /* 文字改为深色 */
+        }
+
+        .intro-text p {
+            margin-bottom: 18px;
+            text-indent: 2em;
+        }
+
+        .intro-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 白色背景的引言样式 */
+        .white-section {
+            background-color: #fff;
+            padding: 25px 15px;
+        }
+
+        .quote-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, rgba(141, 14, 66, 0.05) 0%, rgba(161, 26, 82, 0.05) 100%);
+            border-left: 4px solid #8D0e42;
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .quote-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #8D0e42;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+        }
+
+        .quote-title:before {
+            content: "";
+            font-size: 20px;
+            margin-right: 8px;
+        }
+
+        .quote-content {
+            font-size: 15px;
+            line-height: 1.8;
+            color: #555;
+            font-style: italic;
+            text-indent: 2em;
+        }
+
+        /* 响应式设计 */
+        @media (min-width: 768px) {
+            .container {
+                max-width: 800px;
+                margin: 20px auto;
+                border-radius: 12px;
+                overflow: hidden;
+            }
+
+            .title-container {
+                border-radius: 12px 12px 0 0;
+            }
+
+            .header-content {
+                padding: 30px 25px;
+            }
+
+            .page-title {
+                font-size: 26px;
+            }
+
+            .page-subtitle {
+                font-size: 16px;
+            }
+
+            .red-section {
+                padding: 30px;
+            }
+
+            .photo-section {
+                margin-bottom: 30px;
+            }
+
+            .profile-image {
+                max-width: 220px; /* 大屏也相应缩小一半 */
+            }
+
+            .intro-section {
+                padding: 25px;
+                margin-bottom: 30px;
+            }
+
+            .intro-text {
+                font-size: 16px;
+            }
+
+            .white-section {
+                padding: 30px;
+            }
+
+            .quote-section {
+                padding: 25px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-content {
+                padding: 20px 15px;
+            }
+
+            .page-title {
+                font-size: 20px;
+            }
+
+            .page-subtitle {
+                font-size: 14px;
+            }
+
+            .red-section {
+                padding: 20px 15px;
+            }
+
+            .photo-section {
+                margin-bottom: 20px;
+            }
+
+            .profile-image {
+                max-width: 150px; /* 小屏也相应缩小 */
+            }
+
+            .intro-section {
+                padding: 18px;
+                margin-bottom: 20px;
+            }
+
+            .intro-text {
+                font-size: 14px;
+                line-height: 1.7;
+            }
+
+            .white-section {
+                padding: 20px 15px;
+            }
+
+            .quote-section {
+                padding: 18px;
+            }
+
+            .quote-title {
+                font-size: 15px;
+            }
+
+            .quote-content {
+                font-size: 14px;
+            }
+        }
+
+        /* 左侧侧边栏导航样式 */
+        .menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 998;
+            transition: opacity 0.3s ease;
+        }
+
+        .menu-overlay.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .menu-content {
+            position: fixed;
+            top: 0;
+            left: -280px;
+            width: 280px;
+            height: 100%;
+            background: white;
+            box-shadow: 2px 0 15px rgba(0, 0, 0, 0.2);
+            z-index: 999;
+            overflow-y: auto;
+            transition: left 0.3s ease;
+        }
+
+        .menu-content.active {
+            left: 0;
+        }
+
+        .menu-header {
+            background: linear-gradient(135deg, #8D0e42 0%, #a11a52 100%);
+            color: white;
+            padding: 20px 15px;
+            font-size: 18px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+
+        .menu-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 28px;
+            cursor: pointer;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
+
+        .menu-close:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .menu-list {
+            padding: 10px 0;
+        }
+
+        .menu-item {
+            display: block;
+            padding: 16px 20px;
+            color: #333;
+            text-decoration: none;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.2s;
+            position: relative;
+        }
+
+        .menu-item:hover {
+            background: #f9f9f9;
+            color: #8D0e42;
+            padding-left: 25px;
+        }
+
+        .menu-item.active {
+            background: rgba(141, 14, 66, 0.08);
+            color: #8D0e42;
+            border-left: 4px solid #8D0e42;
+            font-weight: 600;
+        }
+
+        /* 动画 */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* 底部信息 */
+        .footer {
+            text-align: center;
+            padding: 20px 15px;
+            color: #666;
+            font-size: 13px;
+            border-top: 1px solid #eee;
+            margin-top: 20px;
+            background-color: #fff;
+        }
+
+        .footer p {
+            margin-bottom: 5px;
+        }
+
+        .footer p:last-child {
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="title-container">
+            <button class="nav-button" onclick="history.back()">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iI2ZmZmZmZiI+PHBhdGggZD0iTTE5IDZsLTYgNiA2IDYgMS40MS0xLjQxTDE1LjgzIDEybDQuNTgtNC41OXoiLz48L3N2Zz4="
+                    alt="返回">
+            </button>
+
+            <div class="main-title">"五像廉音"之一：蔡元培先生</div>
+            <button class="nav-button" onclick="toggleMenu()">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iI2ZmZmZmZiI+PHBhdGggZD0iTTMgMThoMTh2LTJIM3Yyem0wLTVoMTh2LTJIM3Yyem0wLTd2MmgxOFY2SDN6Ii8+PC9zdmc+"
+                    alt="菜单">
+            </button>
+        </div>
+
+        <!-- 菜单遮罩层 -->
+        <div class="menu-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
+
+        <!-- 左侧侧边栏导航 -->
+        <div class="menu-content" id="mainMenu">
+            <div class="menu-header">
+                <span>目录</span>
+                <button class="menu-close" onclick="toggleMenu()">×</button>
+            </div>
+            <div class="menu-list">
+                <a href="caiyuanpei.html" class="menu-item">五像廉音"之一：蔡元培先生</a>
+                <a href="xiaoyoumei.html" class="menu-item">五像廉音"之二：萧友梅先生</a>
+                <a href="huangzi.html" class="menu-item">五像廉音"之三：黄自先生</a>
+                <a href="heluting.html" class="menu-item">五像廉音"之四：贺绿汀先生</a>
+                <a href="dingshande.html" class="menu-item">五像廉音"之五：丁善德先生</a>
+                <a href="appendix.html" class="menu-item">附录：贺绿汀《廉政歌》</a>
+            </div>
+        </div>
+
+        <!-- 标题区域 - 左对齐 -->
+        <div class="header-content">
+            <h1 class="page-title">蔡元培先生 (1868-1940)</h1>
+            <div class="page-subtitle">著名教育家、思想家，中国现代教育事业的奠基人</div>
+            <div class="page-subtitle">国立音乐院（上海音乐学院前身）首任院长</div>
+        </div>
+
+        <!-- 红色背景的人物作品部分 -->
+        <div class="red-section">
+            <div class="main-content">
+                <!-- 照片部分 - 无边框 -->
+                <div class="photo-section">
+                    <img class="profile-image" src="./img/caiyuanpei.jpeg" alt="蔡元培先生肖像">
+                </div>
+
+                <!-- 介绍文字部分 - 浅色底色，无边框 -->
+                <div class="intro-section">
+                    <div class="intro-text">
+                        <p>蔡元培先生是中国近代著名的民主革命家、思想家、教育家，曾任中华民国临时政府教育总长、北京大学校长、南京国民政府大学院院长。</p>
+                        <p>1927年11月27日，在蔡先生的努力下，中国第一所独立建制的国立高等音乐学府——国立音乐院（上海音乐学院前身）在上海宣告成立，蔡元培任院长，萧友梅任教务主任。</p>
+                        <p>作为我院创校首任院长，蔡元培先生以其卓越的教育理念和远见卓识，为中国现代音乐教育事业奠定了坚实基础。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 白色背景的引言部分 -->
+        <div class="white-section">
+            <div class="quote-section">
+                <div class="quote-title">作为上海音乐学院创校首任院长，蔡元培先生曾预言——</div>
+                <div class="quote-content">
+                    “诸位勿以为现在来学者不多，院舍亦狭窄稍抱不安之感。古人谓"作始简将比钜"，只要教学者及办事人，皆以一番热忱毅力，相策相辅，龟勉精进，则必日起有功，学者济济，术业成就，可拭目以待……鄙人今日对于本院成立，与君共话一堂，于欢喜赞叹之余，而怀抱无穷之希望也。”
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>上海音乐学院廉洁文化教育资料</p>
+            <p style="font-size: 12px; margin-top: 5px;">© 2025 版权所有</p>
+        </div>
+    </div>
+
+    <script>
+        // 菜单显示/隐藏功能
+        function toggleMenu() {
+            const menu = document.getElementById('mainMenu');
+            const overlay = document.getElementById('menuOverlay');
+            
+            if (menu.classList.contains('active')) {
+                menu.classList.remove('active');
+                overlay.classList.remove('active');
+            } else {
+                menu.classList.add('active');
+                overlay.classList.add('active');
+            }
+        }
+
+        // 页面加载完成后初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            // 为当前页面菜单项添加激活状态
+            const menuItems = document.querySelectorAll('.menu-item');
+            
+            menuItems.forEach(item => {
+                if (item.textContent.includes('蔡元培先生')) {
+                    item.classList.add('active');
+                }
+                
+                // 添加点击菜单项时关闭菜单的功能
+                item.addEventListener('click', function() {
+                    toggleMenu();
+                });
+            });
+            
+            // ESC键关闭菜单
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape') {
+                    const menu = document.getElementById('mainMenu');
+                    if (menu && menu.classList.contains('active')) {
+                        toggleMenu();
+                    }
+                }
+            });
+            
+            // 图片加载失败时的处理
+            const profileImage = document.querySelector('.profile-image');
+            if (profileImage) {
+                profileImage.onerror = function() {
+                    this.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUwIiBoZWlnaHQ9IjE4Ny41IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNmMGYwZjAiLz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgzMCw0NSkiPjxjaXJjbGUgY3g9IjQ1IiBjeT0iMzAiIHI9IjI1IiBmaWxsPSIjZGNkY2RjIi8+PHBhdGggZD0iTTQ1IDQyLjVjMi4wNSAwIDMuNzUtMS43IDMuNzUtMy43NVM0Ny4wNSAzNSA0NSAzNXMtMy43NSAxLjctMy43NSAzLjc1IDEuNyAzLjc1IDMuNzUgMy43NXoiIGZpbGw9IiNhNWE1YTUiLz48cGF0aCBkPSJNNDUgNDcuNWMtNy42NSAwLTEzLjg3IDYuMi0xMy44NyAxMy44N2gyNy43NEM1OC44NyA1My43IDUyLjY1IDQ3LjUgNDUgNDcuNXoiIGZpbGw9IiNhNWE1YTUiLz48dGV4dCB4PSI0NSIgeT0iMTAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxMiIgZmlsbD0iIzY2NiI+Q2FpIFl1YW5wZWk8L3RleHQ+PC9nPjwvc3ZnPg==';
+                    this.alt = '蔡元培先生肖像（图片加载失败）';
+                };
+            }
+        });
+    </script>
+</body>
+</html>
