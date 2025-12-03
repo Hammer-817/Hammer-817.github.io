@@ -2,7 +2,7 @@
 function navigateTo(page) {
     // 根据点击的菜单项跳转到对应页面
     const pageMap = {
-        '五像廉音"之一：蔡元培先生': 'caiyuanpei.html',
+        '五像廉音"之一：蔡元培先生': 'index.html',
         '五像廉音"之二：萧友梅先生': 'xiaoyoumei.html',
         '五像廉音"之三：黄自先生': 'huangzi.html',
         '五像廉音"之四：贺绿汀先生': 'heluting.html',
